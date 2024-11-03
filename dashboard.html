@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #004080;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #004080;
+            padding: 10px;
+        }
+        nav a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 9500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #004080;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout a {
+            color: #004080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .logout a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>Welcome to the Student Dashboard</header>
+
+<nav>
+    <a href="./practise.html">Home</a>
+    <a href="./aboutus.html">About Us</a>
+    <a href="./events.html">Event Details</a>
+    <a href="./faculty.html">Faculty</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Personal Details</h2>
+    <p><strong>Name:</strong> John Doe</p>
+    <p><strong>Age:</strong> 21</p>
+    <p><strong>Course:</strong> Computer Science</p>
+
+    <h2>Academic Details</h2>
+    <div class="input-group">
+        <label for="totalMarks">Enter Total Marks (e.g., 450 out of 500):</label>
+        <input type="text" id="totalMarks" placeholder="Total Marks">
+    </div>
+    <div class="input-group">
+        <input type="text" id="marksObtained" placeholder="Marks Obtained">
+    </div>
+    <button class="button" onclick="calculatePercentage()">Calculate Percentage</button>
+    <p class="result">Percentage: <span id="percentage">-</span>%</p>
+
+    <div class="input-group">
+        <label for="cgpa">Enter CGPA (Out of 10):</label>
+        <input type="text" id="cgpa" placeholder="Enter CGPA">
+    </div>
+    <button class="button" onclick="displayCGPA()">Display CGPA</button>
+    <p class="result">CGPA: <span id="displayedCGPA">-</span></p>
+
+    <div class="logout">
+        <a href="./login.html">Logout</a>
+    </div>
+</div>
+
+<script>
+    function calculatePercentage() {
+        const totalMarks = parseFloat(document.getElementById("totalMarks").value);
+        const marksObtained = parseFloat(document.getElementById("marksObtained").value);
+        if (!isNaN(totalMarks) && !isNaN(marksObtained) && totalMarks > 0) {
+            const percentage = (marksObtained / totalMarks) * 100;
+            document.getElementById("percentage").innerText = percentage.toFixed(2);
+        } else {
+            alert("Please enter valid marks.");
+        }
+    }
+
+    function displayCGPA() {
+        const cgpa = parseFloat(document.getElementById("cgpa").value);
+        if (!isNaN(cgpa) && cgpa >= 0 && cgpa <= 10) {
+            document.getElementById("displayedCGPA").innerText = cgpa.toFixed(2);
+        } else {
+            alert("Please enter a valid CGPA (0-10).");
+        }
+    }
+</script>
+
+</body>
+</html>

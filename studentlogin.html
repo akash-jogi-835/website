@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="studentlogin.css">
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm" action="/login" method="POST">
+            <h2>Student Login</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+    </div>
+
+    <!-- JavaScript for handling form submission and redirection -->
+    <script>
+      function handleLogin() {
+    // Fetch user input
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Simulate a login check (in a real application, check with a database)
+    if (username === 'user@123' && password === '1234567') {
+        // Redirect to another page
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Incorrect username or password.");
+    }
+    return false; // Prevent form submission
+}
+    </script>
+</body>
+</html>
